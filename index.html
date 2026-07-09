@@ -6,29 +6,29 @@
 
   <title>Letreiro Pro</title>
 
-  <meta name="theme-color" content="#14141a" />
+  <meta name="theme-color" content="#1f1e24" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Letreiro Pro" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
   <style>
     :root {
-      --font-mono: "Courier New", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: "Courier New", ui-monospace, monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 
-      --bg-base: #14141a;
-      --bg-panel: #1f1e24;
-      --bg-chip: #292832;
-      --bg-input: #141319;
+      --bg: #1f1e24;
+      --panel: #24232b;
+      --input: #15141b;
+      --chip: #302f39;
+      --line: #3c3b46;
 
-      --line: #373641;
-      --text-primary: #f1eee8;
-      --text-muted: #9b98aa;
+      --text: #f4f0e8;
+      --muted: #a09cad;
 
-      --accent-yellow: #f4c95d;
-      --accent-teal: #2fc4a8;
-      --accent-red: #ff6688;
+      --yellow: #f4c95d;
+      --teal: #31c6aa;
+      --red: #ff6385;
     }
 
     * {
@@ -41,33 +41,40 @@
       margin: 0;
       padding: 0;
       width: 100%;
+      min-width: 100%;
       min-height: 100%;
-      background: var(--bg-base);
-      color: var(--text-primary);
+      background: var(--bg);
+      color: var(--text);
       overflow-x: hidden;
+      font-family: var(--font-sans);
     }
 
     body {
-      font-family: var(--font-sans);
       min-height: 100vh;
       min-height: 100dvh;
-      display: block;
     }
 
     .app {
       width: 100%;
+      min-width: 100%;
       min-height: 100vh;
       min-height: 100dvh;
-      background: var(--bg-panel);
-      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      overflow-x: hidden;
     }
 
     .topbar {
+      width: 100%;
       position: sticky;
       top: 0;
-      z-index: 10;
-      background: rgba(31, 30, 36, 0.96);
-      backdrop-filter: blur(12px);
+      z-index: 20;
+      background: rgba(31, 30, 36, 0.97);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
       padding: calc(12px + env(safe-area-inset-top)) 14px 12px;
       display: flex;
@@ -79,15 +86,16 @@
       width: 42px;
       height: 42px;
       border-radius: 12px;
-      background: var(--bg-base);
+      background: var(--input);
       border: 1px solid var(--line);
-      color: var(--accent-yellow);
+      color: var(--yellow);
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--font-mono);
       font-size: 20px;
-      font-weight: 800;
+      font-weight: 900;
+      flex: 0 0 auto;
     }
 
     .top-info {
@@ -98,36 +106,36 @@
     .title {
       font-family: var(--font-mono);
       font-size: 11px;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 3px;
+      color: var(--muted);
+      margin-bottom: 4px;
     }
 
-    .subtitle {
+    .counter {
       font-size: 14px;
-      font-weight: 800;
-      color: var(--text-primary);
+      font-weight: 900;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    .body {
+    .content {
+      width: 100%;
       padding: 14px;
-      padding-bottom: calc(28px + env(safe-area-inset-bottom));
+      padding-bottom: calc(34px + env(safe-area-inset-bottom));
     }
 
-    .section-label {
+    .label {
       font-family: var(--font-mono);
       font-size: 10px;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--muted);
       margin: 18px 2px 8px;
     }
 
-    .quick-row {
+    .quick {
       display: grid;
       grid-template-columns: 1fr 112px;
       gap: 8px;
@@ -135,32 +143,32 @@
 
     input {
       width: 100%;
-      height: 48px;
-      border-radius: 13px;
+      height: 50px;
+      border-radius: 14px;
       border: 1px solid var(--line);
-      background: var(--bg-input);
-      color: var(--text-primary);
-      font-size: 18px;
-      font-weight: 800;
-      padding: 0 14px;
+      background: var(--input);
+      color: var(--text);
+      padding: 0 15px;
+      font-size: 20px;
+      font-weight: 900;
       outline: none;
       text-transform: uppercase;
     }
 
     button {
       border: none;
-      cursor: pointer;
+      outline: none;
       font-family: var(--font-sans);
       font-weight: 900;
+      cursor: pointer;
     }
 
-    .best-btn {
-      height: 48px;
-      border-radius: 13px;
-      background: var(--accent-yellow);
-      color: #211a05;
+    .best {
+      height: 50px;
+      border-radius: 14px;
+      background: var(--yellow);
+      color: #221a05;
       font-size: 14px;
-      box-shadow: inset 0 -2px 0 rgba(0,0,0,0.16);
     }
 
     .letters {
@@ -169,123 +177,123 @@
       gap: 6px;
     }
 
-    .letter-btn {
+    .letter {
       aspect-ratio: 1;
-      border-radius: 9px;
+      border-radius: 10px;
+      background: var(--chip);
       border: 1px solid var(--line);
-      background: var(--bg-chip);
-      color: var(--text-primary);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 900;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 800;
       user-select: none;
     }
 
-    .letter-btn.active {
-      background: var(--accent-yellow);
-      border-color: var(--accent-yellow);
+    .letter.active {
+      background: var(--yellow);
+      border-color: var(--yellow);
       color: #211a05;
-      box-shadow: inset 0 -2px 0 rgba(0,0,0,0.18);
     }
 
     .toggle {
+      width: 100%;
       display: flex;
       gap: 4px;
-      padding: 4px;
-      background: var(--bg-chip);
+      background: var(--chip);
       border: 1px solid var(--line);
-      border-radius: 13px;
+      border-radius: 14px;
+      padding: 4px;
     }
 
-    .toggle-btn {
+    .toggle div {
       flex: 1;
-      padding: 11px 5px;
-      border-radius: 10px;
       text-align: center;
-      color: var(--text-muted);
+      padding: 12px 4px;
+      border-radius: 11px;
+      color: var(--muted);
       font-size: 13px;
       font-weight: 900;
       user-select: none;
     }
 
-    .toggle-btn.active.teal {
-      background: var(--accent-teal);
-      color: #061f1a;
+    .toggle .active.lang {
+      background: var(--teal);
+      color: #062019;
     }
 
-    .toggle-btn.active.yellow {
-      background: var(--accent-yellow);
+    .toggle .active.filter {
+      background: var(--yellow);
       color: #211a05;
     }
 
-    .suggestion-box {
+    .suggestion {
       display: grid;
-      grid-template-columns: 1fr 96px;
+      grid-template-columns: 1fr 98px;
       gap: 8px;
     }
 
     .chosen {
-      min-height: 58px;
-      border-radius: 14px;
-      background: var(--bg-input);
+      min-height: 62px;
+      border-radius: 15px;
       border: 1px solid var(--line);
-      padding: 10px 12px;
+      background: var(--input);
+      padding: 11px 13px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      min-width: 0;
     }
 
     .chosen small {
       font-family: var(--font-mono);
       font-size: 10px;
-      letter-spacing: 0.14em;
-      color: var(--text-muted);
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      margin-bottom: 4px;
+      color: var(--muted);
+      margin-bottom: 5px;
     }
 
-    .chosen-word {
+    .chosen strong {
       font-family: var(--font-mono);
-      font-size: 22px;
-      font-weight: 900;
-      color: var(--accent-yellow);
+      color: var(--yellow);
+      font-size: 23px;
       overflow: hidden;
-      text-overflow: ellipsis;
       white-space: nowrap;
+      text-overflow: ellipsis;
     }
 
-    .copy-btn {
-      border-radius: 14px;
-      background: var(--accent-teal);
-      color: #061f1a;
+    .copy {
+      border-radius: 15px;
+      background: var(--teal);
+      color: #062019;
       font-size: 14px;
     }
 
-    .action-row {
+    .actions {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8px;
       margin-top: 10px;
     }
 
-    .secondary-btn {
-      height: 44px;
-      border-radius: 13px;
-      background: var(--bg-chip);
+    .used-btn {
+      height: 46px;
+      border-radius: 14px;
       border: 1px solid var(--line);
-      color: var(--text-primary);
+      background: var(--chip);
+      color: var(--text);
       font-size: 13px;
     }
 
-    .danger-btn {
-      height: 44px;
-      border-radius: 13px;
+    .clear {
+      height: 46px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 99, 133, 0.6);
       background: transparent;
-      border: 1px solid rgba(255, 102, 136, 0.55);
-      color: var(--accent-red);
+      color: var(--red);
       font-size: 13px;
     }
 
@@ -293,30 +301,31 @@
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
+      width: 100%;
       margin-top: 8px;
     }
 
-    .word-tile {
+    .word {
+      max-width: 100%;
       border-radius: 10px;
       border: 1px solid var(--line);
-      background: var(--bg-chip);
-      color: var(--text-primary);
+      background: var(--chip);
       padding: 8px 10px;
       font-family: var(--font-mono);
       font-size: 13px;
       display: flex;
       align-items: center;
       gap: 5px;
-      max-width: 100%;
+      color: var(--text);
     }
 
-    .word-tile.priority {
-      border-color: var(--accent-yellow);
-      color: var(--accent-yellow);
+    .word.priority {
+      border-color: var(--yellow);
+      color: var(--yellow);
     }
 
-    .word-tile.used {
-      opacity: 0.38;
+    .word.used {
+      opacity: 0.35;
       text-decoration: line-through;
     }
 
@@ -324,33 +333,29 @@
       font-size: 9px;
       padding: 2px 4px;
       border-radius: 5px;
-      background: var(--bg-base);
-      color: var(--text-muted);
-      font-family: var(--font-mono);
+      background: var(--input);
+      color: var(--muted);
       text-decoration: none;
     }
 
     .empty {
       width: 100%;
-      padding: 18px 8px;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 13px;
       border: 1px dashed var(--line);
-      border-radius: 13px;
+      border-radius: 14px;
+      padding: 18px 10px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
     }
 
     .history {
       border-top: 1px solid var(--line);
-      margin-top: 22px;
-      padding-top: 12px;
-      color: var(--text-muted);
+      padding-top: 13px;
+      margin-top: 8px;
+      color: var(--muted);
       font-size: 13px;
       line-height: 1.55;
-    }
-
-    .history strong {
-      color: var(--text-primary);
+      word-break: break-word;
     }
 
     .toast {
@@ -358,45 +363,22 @@
       left: 50%;
       bottom: calc(18px + env(safe-area-inset-bottom));
       transform: translateX(-50%) translateY(20px);
-      background: #0f0f14;
+      opacity: 0;
+      background: #101016;
+      color: var(--text);
       border: 1px solid var(--line);
-      color: var(--text-primary);
-      padding: 11px 14px;
+      padding: 11px 15px;
       border-radius: 999px;
       font-size: 13px;
-      font-weight: 800;
-      opacity: 0;
-      pointer-events: none;
+      font-weight: 900;
       transition: 0.22s ease;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+      pointer-events: none;
       z-index: 999;
     }
 
     .toast.show {
       opacity: 1;
       transform: translateX(-50%) translateY(0);
-    }
-
-    @media (min-width: 720px) {
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        padding: 24px;
-      }
-
-      .app {
-        max-width: 440px;
-        min-height: auto;
-        border: 1px solid var(--line);
-        border-radius: 22px;
-        box-shadow: 0 18px 50px rgba(0,0,0,0.45);
-      }
-
-      .topbar {
-        padding-top: 14px;
-        border-radius: 22px 22px 0 0;
-      }
     }
   </style>
 </head>
@@ -405,446 +387,204 @@
   <main class="app">
     <header class="topbar">
       <div class="dial" id="dial">S</div>
-
       <div class="top-info">
         <div class="title">Letreiro Pro</div>
-        <div class="subtitle" id="counter">Carregando palavras…</div>
+        <div class="counter" id="counter">Carregando...</div>
       </div>
     </header>
 
-    <section class="body">
-      <div class="section-label">Letra rápida</div>
-
-      <div class="quick-row">
-        <input id="letterInput" maxlength="1" value="S" autocomplete="off" />
-        <button class="best-btn" id="bestBtn">Melhor</button>
+    <section class="content">
+      <div class="label">Letra rápida</div>
+      <div class="quick">
+        <input id="letterInput" maxlength="1" value="S" />
+        <button class="best" id="bestBtn">Melhor</button>
       </div>
 
-      <div class="section-label">Letra inicial</div>
+      <div class="label">Letra inicial</div>
       <div class="letters" id="letters"></div>
 
-      <div class="section-label">Idioma</div>
+      <div class="label">Idioma</div>
       <div class="toggle" id="langToggle">
-        <div class="toggle-btn teal active" data-lang="both">PT + EN</div>
-        <div class="toggle-btn teal" data-lang="pt">PT</div>
-        <div class="toggle-btn teal" data-lang="en">EN</div>
+        <div class="active lang" data-lang="both">PT + EN</div>
+        <div data-lang="pt">PT</div>
+        <div data-lang="en">EN</div>
       </div>
 
-      <div class="section-label">Filtro</div>
+      <div class="label">Filtro</div>
       <div class="toggle" id="filterToggle">
-        <div class="toggle-btn yellow active" data-filter="all">Todas</div>
-        <div class="toggle-btn yellow" data-filter="priority">Só Y/X</div>
-        <div class="toggle-btn yellow" data-filter="unused">Sem repetidas</div>
+        <div class="active filter" data-filter="all">Todas</div>
+        <div data-filter="priority">Só Y/X</div>
+        <div data-filter="unused">Sem repetidas</div>
       </div>
 
-      <div class="section-label">Sugestão</div>
-      <div class="suggestion-box">
+      <div class="label">Sugestão</div>
+      <div class="suggestion">
         <div class="chosen">
           <small>Palavra escolhida</small>
-          <div class="chosen-word" id="chosenWord">---</div>
+          <strong id="chosenWord">---</strong>
         </div>
-
-        <button class="copy-btn" id="copyBtn">Copiar</button>
+        <button class="copy" id="copyBtn">Copiar</button>
       </div>
 
-      <div class="action-row">
-        <button class="secondary-btn" id="markBtn">Marcar usada</button>
-        <button class="danger-btn" id="clearBtn">Limpar histórico</button>
+      <div class="actions">
+        <button class="used-btn" id="markBtn">Marcar usada</button>
+        <button class="clear" id="clearBtn">Limpar histórico</button>
       </div>
 
-      <div class="section-label">Palavras <span style="color: var(--accent-yellow);">●</span> = termina em Y/X</div>
+      <div class="label">Palavras <span style="color: var(--yellow);">●</span> = termina em Y/X</div>
       <div class="word-list" id="wordList"></div>
 
-      <div class="section-label">Histórico</div>
-      <div class="history" id="historyBox">Nenhuma palavra usada ainda.</div>
+      <div class="label">Histórico</div>
+      <div class="history" id="history">Nenhuma palavra usada ainda.</div>
     </section>
   </main>
 
-  <div class="toast" id="toast">Copiado</div>
+  <div class="toast" id="toast">Ok</div>
 
   <script>
     const WORDS = [
-      { w: "amor", l: "pt" },
-      { w: "agua", l: "pt" },
-      { w: "arvore", l: "pt" },
-      { w: "azul", l: "pt" },
-      { w: "amigo", l: "pt" },
-      { w: "abacaxi", l: "pt" },
-      { w: "animal", l: "pt" },
-      { w: "alegria", l: "pt" },
-      { w: "asa", l: "pt" },
-      { w: "anzol", l: "pt" },
+      { w: "amor", l: "pt" }, { w: "agua", l: "pt" }, { w: "arvore", l: "pt" }, { w: "azul", l: "pt" }, { w: "amigo", l: "pt" },
+      { w: "abacaxi", l: "pt" }, { w: "animal", l: "pt" }, { w: "alegria", l: "pt" }, { w: "asa", l: "pt" }, { w: "anzol", l: "pt" },
+      { w: "apple", l: "en" }, { w: "animal", l: "en" }, { w: "art", l: "en" }, { w: "away", l: "en" }, { w: "any", l: "en" },
+      { w: "apply", l: "en" }, { w: "array", l: "en" }, { w: "annoy", l: "en" }, { w: "anxiety", l: "en" }, { w: "ally", l: "en" },
 
-      { w: "apple", l: "en" },
-      { w: "animal", l: "en" },
-      { w: "art", l: "en" },
-      { w: "away", l: "en" },
-      { w: "any", l: "en" },
-      { w: "apply", l: "en" },
-      { w: "array", l: "en" },
-      { w: "annoy", l: "en" },
-      { w: "anxiety", l: "en" },
-      { w: "ally", l: "en" },
+      { w: "bola", l: "pt" }, { w: "barco", l: "pt" }, { w: "beleza", l: "pt" }, { w: "boneca", l: "pt" }, { w: "bicho", l: "pt" },
+      { w: "borboleta", l: "pt" }, { w: "banana", l: "pt" }, { w: "box", l: "pt" },
+      { w: "box", l: "en" }, { w: "boy", l: "en" }, { w: "busy", l: "en" }, { w: "berry", l: "en" }, { w: "buy", l: "en" },
+      { w: "body", l: "en" }, { w: "bay", l: "en" }, { w: "bury", l: "en" }, { w: "beauty", l: "en" },
 
-      { w: "bola", l: "pt" },
-      { w: "barco", l: "pt" },
-      { w: "beleza", l: "pt" },
-      { w: "boneca", l: "pt" },
-      { w: "bicho", l: "pt" },
-      { w: "borboleta", l: "pt" },
-      { w: "banana", l: "pt" },
-      { w: "box", l: "pt" },
+      { w: "casa", l: "pt" }, { w: "carro", l: "pt" }, { w: "cachorro", l: "pt" }, { w: "ceu", l: "pt" }, { w: "chuva", l: "pt" },
+      { w: "cidade", l: "pt" }, { w: "cor", l: "pt" }, { w: "climax", l: "pt" }, { w: "cortex", l: "pt" },
+      { w: "cry", l: "en" }, { w: "copy", l: "en" }, { w: "city", l: "en" }, { w: "candy", l: "en" }, { w: "country", l: "en" },
+      { w: "complex", l: "en" }, { w: "climax", l: "en" }, { w: "cortex", l: "en" }, { w: "crazy", l: "en" },
 
-      { w: "box", l: "en" },
-      { w: "boy", l: "en" },
-      { w: "busy", l: "en" },
-      { w: "berry", l: "en" },
-      { w: "buy", l: "en" },
-      { w: "body", l: "en" },
-      { w: "bay", l: "en" },
-      { w: "bury", l: "en" },
-      { w: "beauty", l: "en" },
+      { w: "dado", l: "pt" }, { w: "dia", l: "pt" }, { w: "doce", l: "pt" }, { w: "dente", l: "pt" }, { w: "deserto", l: "pt" },
+      { w: "durex", l: "pt" }, { w: "dinheiro", l: "pt" },
+      { w: "day", l: "en" }, { w: "dry", l: "en" }, { w: "duty", l: "en" }, { w: "deny", l: "en" }, { w: "destiny", l: "en" },
+      { w: "dizzy", l: "en" }, { w: "duplex", l: "en" }, { w: "dandy", l: "en" },
 
-      { w: "casa", l: "pt" },
-      { w: "carro", l: "pt" },
-      { w: "cachorro", l: "pt" },
-      { w: "ceu", l: "pt" },
-      { w: "chuva", l: "pt" },
-      { w: "cidade", l: "pt" },
-      { w: "cor", l: "pt" },
-      { w: "climax", l: "pt" },
-      { w: "cortex", l: "pt" },
+      { w: "estrela", l: "pt" }, { w: "escola", l: "pt" }, { w: "espelho", l: "pt" }, { w: "elefante", l: "pt" }, { w: "energia", l: "pt" },
+      { w: "easy", l: "en" }, { w: "envy", l: "en" }, { w: "empty", l: "en" }, { w: "enemy", l: "en" }, { w: "energy", l: "en" },
+      { w: "essay", l: "en" }, { w: "entry", l: "en" },
 
-      { w: "cry", l: "en" },
-      { w: "copy", l: "en" },
-      { w: "city", l: "en" },
-      { w: "candy", l: "en" },
-      { w: "country", l: "en" },
-      { w: "complex", l: "en" },
-      { w: "climax", l: "en" },
-      { w: "cortex", l: "en" },
-      { w: "crazy", l: "en" },
-
-      { w: "dado", l: "pt" },
-      { w: "dia", l: "pt" },
-      { w: "doce", l: "pt" },
-      { w: "dente", l: "pt" },
-      { w: "deserto", l: "pt" },
-      { w: "durex", l: "pt" },
-      { w: "dinheiro", l: "pt" },
-
-      { w: "day", l: "en" },
-      { w: "dry", l: "en" },
-      { w: "duty", l: "en" },
-      { w: "deny", l: "en" },
-      { w: "destiny", l: "en" },
-      { w: "dizzy", l: "en" },
-      { w: "duplex", l: "en" },
-      { w: "dandy", l: "en" },
-
-      { w: "estrela", l: "pt" },
-      { w: "escola", l: "pt" },
-      { w: "espelho", l: "pt" },
-      { w: "elefante", l: "pt" },
-      { w: "energia", l: "pt" },
-
-      { w: "easy", l: "en" },
-      { w: "envy", l: "en" },
-      { w: "empty", l: "en" },
-      { w: "enemy", l: "en" },
-      { w: "energy", l: "en" },
-      { w: "essay", l: "en" },
-      { w: "entry", l: "en" },
-
-      { w: "fogo", l: "pt" },
-      { w: "flor", l: "pt" },
-      { w: "floresta", l: "pt" },
-      { w: "familia", l: "pt" },
-      { w: "felicidade", l: "pt" },
+      { w: "fogo", l: "pt" }, { w: "flor", l: "pt" }, { w: "floresta", l: "pt" }, { w: "familia", l: "pt" }, { w: "felicidade", l: "pt" },
       { w: "fenix", l: "pt" },
+      { w: "fly", l: "en" }, { w: "fry", l: "en" }, { w: "funny", l: "en" }, { w: "family", l: "en" }, { w: "fantasy", l: "en" },
+      { w: "fix", l: "en" }, { w: "fox", l: "en" }, { w: "phoenix", l: "en" }, { w: "foxy", l: "en" },
 
-      { w: "fly", l: "en" },
-      { w: "fry", l: "en" },
-      { w: "funny", l: "en" },
-      { w: "family", l: "en" },
-      { w: "fantasy", l: "en" },
-      { w: "fix", l: "en" },
-      { w: "fox", l: "en" },
-      { w: "phoenix", l: "en" },
-      { w: "foxy", l: "en" },
+      { w: "gato", l: "pt" }, { w: "guitarra", l: "pt" }, { w: "gente", l: "pt" }, { w: "girassol", l: "pt" }, { w: "gelo", l: "pt" },
+      { w: "gray", l: "en" }, { w: "guy", l: "en" }, { w: "glory", l: "en" }, { w: "galaxy", l: "en" }, { w: "gravity", l: "en" },
 
-      { w: "gato", l: "pt" },
-      { w: "guitarra", l: "pt" },
-      { w: "gente", l: "pt" },
-      { w: "girassol", l: "pt" },
-      { w: "gelo", l: "pt" },
+      { w: "historia", l: "pt" }, { w: "horizonte", l: "pt" }, { w: "heroi", l: "pt" }, { w: "honra", l: "pt" },
+      { w: "happy", l: "en" }, { w: "holy", l: "en" }, { w: "hobby", l: "en" }, { w: "history", l: "en" }, { w: "hurry", l: "en" }, { w: "hoax", l: "en" },
 
-      { w: "gray", l: "en" },
-      { w: "guy", l: "en" },
-      { w: "glory", l: "en" },
-      { w: "galaxy", l: "en" },
-      { w: "gravity", l: "en" },
+      { w: "ilha", l: "pt" }, { w: "inverno", l: "pt" }, { w: "idioma", l: "pt" }, { w: "igreja", l: "pt" }, { w: "imagem", l: "pt" },
+      { w: "index", l: "en" }, { w: "identity", l: "en" }, { w: "irony", l: "en" }, { w: "infinity", l: "en" }, { w: "industry", l: "en" },
 
-      { w: "historia", l: "pt" },
-      { w: "horizonte", l: "pt" },
-      { w: "heroi", l: "pt" },
-      { w: "honra", l: "pt" },
+      { w: "jardim", l: "pt" }, { w: "janela", l: "pt" }, { w: "jornada", l: "pt" }, { w: "joia", l: "pt" },
+      { w: "joy", l: "en" }, { w: "jelly", l: "en" }, { w: "journey", l: "en" }, { w: "jury", l: "en" },
 
-      { w: "happy", l: "en" },
-      { w: "holy", l: "en" },
-      { w: "hobby", l: "en" },
-      { w: "history", l: "en" },
-      { w: "hurry", l: "en" },
-      { w: "hoax", l: "en" },
+      { w: "kiwi", l: "pt" }, { w: "key", l: "en" }, { w: "kitty", l: "en" }, { w: "karma", l: "en" },
 
-      { w: "ilha", l: "pt" },
-      { w: "inverno", l: "pt" },
-      { w: "idioma", l: "pt" },
-      { w: "igreja", l: "pt" },
-      { w: "imagem", l: "pt" },
+      { w: "lua", l: "pt" }, { w: "luz", l: "pt" }, { w: "livro", l: "pt" }, { w: "lago", l: "pt" }, { w: "lapis", l: "pt" }, { w: "latex", l: "pt" },
+      { w: "lucky", l: "en" }, { w: "lonely", l: "en" }, { w: "lady", l: "en" }, { w: "lazy", l: "en" }, { w: "legacy", l: "en" }, { w: "latex", l: "en" },
 
-      { w: "index", l: "en" },
-      { w: "identity", l: "en" },
-      { w: "irony", l: "en" },
-      { w: "infinity", l: "en" },
-      { w: "industry", l: "en" },
+      { w: "mar", l: "pt" }, { w: "montanha", l: "pt" }, { w: "musica", l: "pt" }, { w: "memoria", l: "pt" }, { w: "mundo", l: "pt" },
+      { w: "mix", l: "en" }, { w: "max", l: "en" }, { w: "memory", l: "en" }, { w: "mystery", l: "en" }, { w: "melody", l: "en" },
+      { w: "matrix", l: "en" }, { w: "messy", l: "en" },
 
-      { w: "jardim", l: "pt" },
-      { w: "janela", l: "pt" },
-      { w: "jornada", l: "pt" },
-      { w: "joia", l: "pt" },
+      { w: "noite", l: "pt" }, { w: "neve", l: "pt" }, { w: "nuvem", l: "pt" }, { w: "natureza", l: "pt" }, { w: "navio", l: "pt" },
+      { w: "nasty", l: "en" }, { w: "nearby", l: "en" }, { w: "navy", l: "en" }, { w: "notify", l: "en" },
 
-      { w: "joy", l: "en" },
-      { w: "jelly", l: "en" },
-      { w: "journey", l: "en" },
-      { w: "jury", l: "en" },
+      { w: "oceano", l: "pt" }, { w: "ouro", l: "pt" }, { w: "onix", l: "pt" }, { w: "olho", l: "pt" },
+      { w: "only", l: "en" }, { w: "opera", l: "en" },
 
-      { w: "kiwi", l: "pt" },
+      { w: "praia", l: "pt" }, { w: "paz", l: "pt" }, { w: "planeta", l: "pt" }, { w: "passaro", l: "pt" }, { w: "ponte", l: "pt" }, { w: "paladar", l: "pt" },
+      { w: "play", l: "en" }, { w: "pray", l: "en" }, { w: "party", l: "en" }, { w: "puppy", l: "en" }, { w: "privacy", l: "en" }, { w: "perplex", l: "en" },
 
-      { w: "key", l: "en" },
-      { w: "kitty", l: "en" },
-      { w: "karma", l: "en" },
+      { w: "queijo", l: "pt" }, { w: "quintal", l: "pt" },
+      { w: "quality", l: "en" }, { w: "query", l: "en" }, { w: "quixotic", l: "en" },
 
-      { w: "lua", l: "pt" },
-      { w: "luz", l: "pt" },
-      { w: "livro", l: "pt" },
-      { w: "lago", l: "pt" },
-      { w: "lapis", l: "pt" },
-      { w: "latex", l: "pt" },
+      { w: "rio", l: "pt" }, { w: "raiz", l: "pt" }, { w: "raposa", l: "pt" }, { w: "relogio", l: "pt" }, { w: "rosa", l: "pt" },
+      { w: "ray", l: "en" }, { w: "rely", l: "en" }, { w: "royalty", l: "en" }, { w: "reply", l: "en" }, { w: "reflex", l: "en" },
+      { w: "remix", l: "en" }, { w: "rusty", l: "en" },
 
-      { w: "lucky", l: "en" },
-      { w: "lonely", l: "en" },
-      { w: "lady", l: "en" },
-      { w: "lazy", l: "en" },
-      { w: "legacy", l: "en" },
-      { w: "latex", l: "en" },
+      { w: "sol", l: "pt" }, { w: "selva", l: "pt" }, { w: "segredo", l: "pt" }, { w: "sonho", l: "pt" }, { w: "saudade", l: "pt" }, { w: "sorte", l: "pt" },
+      { w: "stay", l: "en" }, { w: "sky", l: "en" }, { w: "story", l: "en" }, { w: "symphony", l: "en" }, { w: "strategy", l: "en" },
+      { w: "six", l: "en" }, { w: "syntax", l: "en" }, { w: "sixty", l: "en" }, { w: "silly", l: "en" }, { w: "study", l: "en" },
 
-      { w: "mar", l: "pt" },
-      { w: "montanha", l: "pt" },
-      { w: "musica", l: "pt" },
-      { w: "memoria", l: "pt" },
-      { w: "mundo", l: "pt" },
+      { w: "terra", l: "pt" }, { w: "tempo", l: "pt" }, { w: "tesouro", l: "pt" }, { w: "torax", l: "pt" }, { w: "tigre", l: "pt" },
+      { w: "tax", l: "en" }, { w: "try", l: "en" }, { w: "tiny", l: "en" }, { w: "trophy", l: "en" }, { w: "trinity", l: "en" },
+      { w: "toxic", l: "en" }, { w: "treaty", l: "en" },
 
-      { w: "mix", l: "en" },
-      { w: "max", l: "en" },
-      { w: "memory", l: "en" },
-      { w: "mystery", l: "en" },
-      { w: "melody", l: "en" },
-      { w: "matrix", l: "en" },
-      { w: "messy", l: "en" },
+      { w: "universo", l: "pt" }, { w: "unha", l: "pt" }, { w: "urso", l: "pt" },
+      { w: "unity", l: "en" }, { w: "ugly", l: "en" }, { w: "urgency", l: "en" },
 
-      { w: "noite", l: "pt" },
-      { w: "neve", l: "pt" },
-      { w: "nuvem", l: "pt" },
-      { w: "natureza", l: "pt" },
-      { w: "navio", l: "pt" },
+      { w: "vento", l: "pt" }, { w: "vida", l: "pt" }, { w: "viagem", l: "pt" }, { w: "vitoria", l: "pt" }, { w: "vulcao", l: "pt" },
+      { w: "victory", l: "en" }, { w: "variety", l: "en" }, { w: "vertex", l: "en" }, { w: "very", l: "en" }, { w: "vanity", l: "en" },
 
-      { w: "nasty", l: "en" },
-      { w: "nearby", l: "en" },
-      { w: "navy", l: "en" },
-      { w: "notify", l: "en" },
+      { w: "way", l: "en" }, { w: "windy", l: "en" }, { w: "worthy", l: "en" }, { w: "wax", l: "en" }, { w: "whisky", l: "en" },
 
-      { w: "oceano", l: "pt" },
-      { w: "ouro", l: "pt" },
-      { w: "onix", l: "pt" },
-      { w: "olho", l: "pt" },
+      { w: "xerox", l: "pt" }, { w: "xale", l: "pt" }, { w: "xadrez", l: "pt" }, { w: "xerox", l: "en" },
 
-      { w: "only", l: "en" },
-      { w: "opera", l: "en" },
+      { w: "yoga", l: "pt" }, { w: "yak", l: "en" }, { w: "yummy", l: "en" },
 
-      { w: "praia", l: "pt" },
-      { w: "paz", l: "pt" },
-      { w: "planeta", l: "pt" },
-      { w: "passaro", l: "pt" },
-      { w: "ponte", l: "pt" },
-      { w: "paladar", l: "pt" },
-
-      { w: "play", l: "en" },
-      { w: "pray", l: "en" },
-      { w: "party", l: "en" },
-      { w: "puppy", l: "en" },
-      { w: "privacy", l: "en" },
-      { w: "perplex", l: "en" },
-
-      { w: "queijo", l: "pt" },
-      { w: "quintal", l: "pt" },
-
-      { w: "quality", l: "en" },
-      { w: "query", l: "en" },
-      { w: "quixotic", l: "en" },
-
-      { w: "rio", l: "pt" },
-      { w: "raiz", l: "pt" },
-      { w: "raposa", l: "pt" },
-      { w: "relogio", l: "pt" },
-      { w: "rosa", l: "pt" },
-
-      { w: "ray", l: "en" },
-      { w: "rely", l: "en" },
-      { w: "royalty", l: "en" },
-      { w: "reply", l: "en" },
-      { w: "reflex", l: "en" },
-      { w: "remix", l: "en" },
-      { w: "rusty", l: "en" },
-
-      { w: "sol", l: "pt" },
-      { w: "selva", l: "pt" },
-      { w: "segredo", l: "pt" },
-      { w: "sonho", l: "pt" },
-      { w: "saudade", l: "pt" },
-      { w: "sorte", l: "pt" },
-
-      { w: "stay", l: "en" },
-      { w: "sky", l: "en" },
-      { w: "story", l: "en" },
-      { w: "symphony", l: "en" },
-      { w: "strategy", l: "en" },
-      { w: "six", l: "en" },
-      { w: "syntax", l: "en" },
-      { w: "sixty", l: "en" },
-      { w: "silly", l: "en" },
-      { w: "study", l: "en" },
-
-      { w: "terra", l: "pt" },
-      { w: "tempo", l: "pt" },
-      { w: "tesouro", l: "pt" },
-      { w: "torax", l: "pt" },
-      { w: "tigre", l: "pt" },
-
-      { w: "tax", l: "en" },
-      { w: "try", l: "en" },
-      { w: "tiny", l: "en" },
-      { w: "trophy", l: "en" },
-      { w: "trinity", l: "en" },
-      { w: "toxic", l: "en" },
-      { w: "treaty", l: "en" },
-
-      { w: "universo", l: "pt" },
-      { w: "unha", l: "pt" },
-      { w: "urso", l: "pt" },
-
-      { w: "unity", l: "en" },
-      { w: "ugly", l: "en" },
-      { w: "urgency", l: "en" },
-
-      { w: "vento", l: "pt" },
-      { w: "vida", l: "pt" },
-      { w: "viagem", l: "pt" },
-      { w: "vitoria", l: "pt" },
-      { w: "vulcao", l: "pt" },
-
-      { w: "victory", l: "en" },
-      { w: "variety", l: "en" },
-      { w: "vertex", l: "en" },
-      { w: "very", l: "en" },
-      { w: "vanity", l: "en" },
-
-      { w: "way", l: "en" },
-      { w: "windy", l: "en" },
-      { w: "worthy", l: "en" },
-      { w: "wax", l: "en" },
-      { w: "whisky", l: "en" },
-
-      { w: "xerox", l: "pt" },
-      { w: "xale", l: "pt" },
-      { w: "xadrez", l: "pt" },
-      { w: "xerox", l: "en" },
-
-      { w: "yoga", l: "pt" },
-      { w: "yak", l: "en" },
-      { w: "yummy", l: "en" },
-
-      { w: "zebra", l: "pt" },
-      { w: "zero", l: "pt" },
-      { w: "zangado", l: "pt" },
-      { w: "zesty", l: "en" },
-      { w: "zany", l: "en" }
+      { w: "zebra", l: "pt" }, { w: "zero", l: "pt" }, { w: "zangado", l: "pt" },
+      { w: "zesty", l: "en" }, { w: "zany", l: "en" }
     ];
-
-    const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
     const state = {
       letter: "S",
       lang: "both",
       filter: "all",
       chosen: "",
-      used: JSON.parse(localStorage.getItem("letreiro_used_words_v2") || "[]")
+      used: JSON.parse(localStorage.getItem("letreiro_used_v3") || "[]")
     };
+
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
     const dial = document.getElementById("dial");
     const counter = document.getElementById("counter");
     const letterInput = document.getElementById("letterInput");
-    const lettersEl = document.getElementById("letters");
+    const letters = document.getElementById("letters");
     const wordList = document.getElementById("wordList");
     const chosenWord = document.getElementById("chosenWord");
-    const historyBox = document.getElementById("historyBox");
-    const bestBtn = document.getElementById("bestBtn");
-    const copyBtn = document.getElementById("copyBtn");
-    const markBtn = document.getElementById("markBtn");
-    const clearBtn = document.getElementById("clearBtn");
+    const history = document.getElementById("history");
     const toast = document.getElementById("toast");
 
-    function normalize(text) {
-      return String(text || "")
+    function normalize(value) {
+      return String(value || "")
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "");
     }
 
-    function isPriority(word) {
+    function priority(word) {
       const clean = normalize(word);
       return clean.endsWith("y") || clean.endsWith("x");
     }
 
     function saveUsed() {
-      localStorage.setItem("letreiro_used_words_v2", JSON.stringify(state.used));
+      localStorage.setItem("letreiro_used_v3", JSON.stringify(state.used));
     }
 
     function showToast(text) {
       toast.textContent = text;
       toast.classList.add("show");
-
-      setTimeout(() => {
-        toast.classList.remove("show");
-      }, 1400);
+      setTimeout(() => toast.classList.remove("show"), 1300);
     }
 
     function getWords() {
-      const letter = normalize(state.letter).slice(0, 1);
-
       let list = WORDS.filter(item => {
-        const cleanWord = normalize(item.w);
-        const matchesLetter = cleanWord.startsWith(letter);
-        const matchesLang = state.lang === "both" || item.l === state.lang;
-
-        return matchesLetter && matchesLang;
-      }).map(item => {
-        return {
-          ...item,
-          priority: isPriority(item.w),
-          used: state.used.includes(item.w)
-        };
-      });
+        const clean = normalize(item.w);
+        const matchLetter = clean.startsWith(normalize(state.letter));
+        const matchLang = state.lang === "both" || item.l === state.lang;
+        return matchLetter && matchLang;
+      }).map(item => ({
+        ...item,
+        priority: priority(item.w),
+        used: state.used.includes(item.w)
+      }));
 
       if (state.filter === "priority") {
         list = list.filter(item => item.priority);
@@ -854,89 +594,82 @@
         list = list.filter(item => !item.used);
       }
 
-      list.sort((a, b) => {
+      return list.sort((a, b) => {
         if (a.used !== b.used) return a.used ? 1 : -1;
         if (a.priority !== b.priority) return b.priority - a.priority;
         return a.w.localeCompare(b.w);
       });
-
-      return list;
     }
 
     function renderLetters() {
-      lettersEl.innerHTML = "";
+      letters.innerHTML = "";
 
-      ALPHABET.forEach(letter => {
-        const btn = document.createElement("div");
-        btn.className = "letter-btn" + (letter === state.letter ? " active" : "");
-        btn.textContent = letter;
+      alphabet.forEach(letter => {
+        const el = document.createElement("div");
+        el.className = "letter" + (letter === state.letter ? " active" : "");
+        el.textContent = letter;
 
-        btn.addEventListener("click", () => {
+        el.onclick = () => {
           state.letter = letter;
           letterInput.value = letter;
           render();
-        });
+        };
 
-        lettersEl.appendChild(btn);
+        letters.appendChild(el);
+      });
+    }
+
+    function renderToggles() {
+      document.querySelectorAll("#langToggle div").forEach(el => {
+        el.classList.toggle("active", el.dataset.lang === state.lang);
+        el.classList.toggle("lang", el.dataset.lang === state.lang);
+      });
+
+      document.querySelectorAll("#filterToggle div").forEach(el => {
+        el.classList.toggle("active", el.dataset.filter === state.filter);
+        el.classList.toggle("filter", el.dataset.filter === state.filter);
       });
     }
 
     function renderWords() {
-      const words = getWords();
+      const list = getWords();
       wordList.innerHTML = "";
 
-      if (words.length === 0) {
-        wordList.innerHTML = '<div class="empty">Nenhuma palavra encontrada com essa letra e filtro.</div>';
+      if (list.length === 0) {
+        wordList.innerHTML = '<div class="empty">Nenhuma palavra encontrada.</div>';
         return;
       }
 
-      words.forEach(item => {
-        const tile = document.createElement("div");
-        tile.className =
-          "word-tile" +
-          (item.priority ? " priority" : "") +
-          (item.used ? " used" : "");
+      list.forEach(item => {
+        const el = document.createElement("div");
+        el.className = "word" + (item.priority ? " priority" : "") + (item.used ? " used" : "");
 
-        tile.innerHTML = `
+        el.innerHTML = `
           <span>${item.w}</span>
           <span class="flag">${item.l.toUpperCase()}</span>
         `;
 
-        tile.addEventListener("click", () => {
+        el.onclick = () => {
           state.chosen = item.w;
           chosenWord.textContent = item.w;
-          showToast("Palavra selecionada");
-        });
+          showToast("Selecionada");
+        };
 
-        wordList.appendChild(tile);
+        wordList.appendChild(el);
       });
     }
 
     function renderHistory() {
-      if (state.used.length === 0) {
-        historyBox.textContent = "Nenhuma palavra usada ainda.";
-        return;
-      }
-
-      historyBox.innerHTML = `<strong>${state.used.length} usadas:</strong> ${state.used.join(", ")}`;
+      history.textContent = state.used.length
+        ? state.used.join(", ")
+        : "Nenhuma palavra usada ainda.";
     }
 
     function renderCounter() {
-      const words = getWords();
-      const priorityCount = words.filter(item => item.priority).length;
-      const freeCount = words.filter(item => !item.used).length;
-
-      counter.textContent = `${words.length} palavras · ${priorityCount} Y/X · ${freeCount} livres`;
-    }
-
-    function renderToggles() {
-      document.querySelectorAll("#langToggle .toggle-btn").forEach(btn => {
-        btn.classList.toggle("active", btn.dataset.lang === state.lang);
-      });
-
-      document.querySelectorAll("#filterToggle .toggle-btn").forEach(btn => {
-        btn.classList.toggle("active", btn.dataset.filter === state.filter);
-      });
+      const list = getWords();
+      const yx = list.filter(item => item.priority).length;
+      const free = list.filter(item => !item.used).length;
+      counter.textContent = `${list.length} palavras · ${yx} Y/X · ${free} livres`;
     }
 
     function render() {
@@ -951,44 +684,42 @@
     }
 
     function chooseBest() {
-      const words = getWords();
-      const unused = words.filter(item => !item.used);
-      const source = unused.length > 0 ? unused : words;
+      const list = getWords();
+      const free = list.filter(item => !item.used);
+      const base = free.length ? free : list;
+      const strong = base.filter(item => item.priority);
+      const finalList = strong.length ? strong : base;
 
-      if (source.length === 0) {
+      if (!finalList.length) {
         state.chosen = "";
         chosenWord.textContent = "---";
-        showToast("Nenhuma palavra encontrada");
+        showToast("Nada encontrado");
         return;
       }
 
-      const priority = source.filter(item => item.priority);
-      const finalList = priority.length > 0 ? priority : source;
       const selected = finalList[Math.floor(Math.random() * finalList.length)];
-
       state.chosen = selected.w;
       chosenWord.textContent = selected.w;
-
       showToast("Melhor palavra gerada");
     }
 
-    async function copyChosen() {
+    async function copyWord() {
       if (!state.chosen) {
-        showToast("Gere uma palavra primeiro");
+        showToast("Gere uma palavra");
         return;
       }
 
       try {
         await navigator.clipboard.writeText(state.chosen);
         showToast("Copiado");
-      } catch (err) {
-        showToast("Não deu para copiar");
+      } catch {
+        showToast("Não copiou");
       }
     }
 
     function markUsed() {
       if (!state.chosen) {
-        showToast("Escolha uma palavra primeiro");
+        showToast("Escolha uma palavra");
         return;
       }
 
@@ -997,7 +728,7 @@
         saveUsed();
       }
 
-      showToast("Marcada como usada");
+      showToast("Marcada");
       render();
     }
 
@@ -1010,7 +741,6 @@
 
     letterInput.addEventListener("input", () => {
       const value = normalize(letterInput.value).slice(0, 1).toUpperCase();
-
       if (!value) return;
 
       state.letter = value;
@@ -1018,45 +748,42 @@
       render();
     });
 
-    document.querySelectorAll("#langToggle .toggle-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        state.lang = btn.dataset.lang;
+    document.getElementById("bestBtn").onclick = chooseBest;
+    document.getElementById("copyBtn").onclick = copyWord;
+    document.getElementById("markBtn").onclick = markUsed;
+    document.getElementById("clearBtn").onclick = clearHistory;
+
+    document.querySelectorAll("#langToggle div").forEach(el => {
+      el.onclick = () => {
+        state.lang = el.dataset.lang;
         render();
-      });
+      };
     });
 
-    document.querySelectorAll("#filterToggle .toggle-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        state.filter = btn.dataset.filter;
+    document.querySelectorAll("#filterToggle div").forEach(el => {
+      el.onclick = () => {
+        state.filter = el.dataset.filter;
         render();
-      });
+      };
     });
-
-    bestBtn.addEventListener("click", chooseBest);
-    copyBtn.addEventListener("click", copyChosen);
-    markBtn.addEventListener("click", markUsed);
-    clearBtn.addEventListener("click", clearHistory);
 
     const manifest = {
       name: "Letreiro Pro",
       short_name: "Letreiro",
       start_url: ".",
       display: "standalone",
-      background_color: "#14141a",
-      theme_color: "#14141a",
+      background_color: "#1f1e24",
+      theme_color: "#1f1e24",
       orientation: "portrait",
       icons: []
     };
 
-    const manifestBlob = new Blob([JSON.stringify(manifest)], {
-      type: "application/manifest+json"
-    });
-
-    const manifestURL = URL.createObjectURL(manifestBlob);
-    const manifestLink = document.createElement("link");
-    manifestLink.rel = "manifest";
-    manifestLink.href = manifestURL;
-    document.head.appendChild(manifestLink);
+    const blob = new Blob([JSON.stringify(manifest)], { type: "application/manifest+json" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("link");
+    link.rel = "manifest";
+    link.href = url;
+    document.head.appendChild(link);
 
     render();
   </script>
