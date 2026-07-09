@@ -4,6 +4,13 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>Letreiro Pro</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1d1c23">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Letreiro Pro">
+<link rel="apple-touch-icon" href="icon-192.png">
+
 <style>
   :root{
     --font-mono:'Courier New', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -544,6 +551,14 @@ document.querySelectorAll(".toggle-btn.lang").forEach(btn=>btn.onclick = (e)=>{e
 document.querySelectorAll(".toggle-btn.mode").forEach(btn=>btn.onclick = (e)=>{e.stopPropagation();state.mode=btn.dataset.mode;render();});
 
 render();
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  });
+}
 </script>
 </body>
 </html>
